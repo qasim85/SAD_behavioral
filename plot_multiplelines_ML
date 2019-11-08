@@ -1,0 +1,68 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Nov  7 22:07:20 2019
+
+@author: qasimbukhari
+"""
+
+sdf2=np.array([
+
+# Ridge        
+        [0.04273475, 0.03965857, 0.03345527, 0.01057841, 0.04656152,
+        0.08569533, 0.17807773, 0.21255351, 0.17772287, 0.02098083,
+        0.14576914, 0.25654846, 0.29876822, 0.2536936 , 0.23218046,
+        0.20471413],
+
+
+# RF
+        [0.001809 , 0.006870, 0.015480, 0.045515,    # 0, 1,2,3, 
+        0.025960, 0.092036, 0.193645, 0.213794, 0.181180  ,0.257111   ,0.168614  ,0.211746  ,       # 4, 5,6,7,8,9,10,11
+       0.289989, 0.226086,  0.161541,  0.137310] ,       # 12, 13,17,25,
+
+
+# SVM
+        [0.007111, 0.045868 , 0.012551 , 0.061792 ,    # 0, 1,2,3, 
+        0.014886, 0.094043, 0.140824, 0.154616, 0.160451, 0.186842, 0.117982, 0.241062   ,       # 4, 5,6,7,8,9,10,11
+       0.301237, 0.262650, 0.222714, 0.205427],       # 12, 13,17,25,
+
+
+
+
+# ET
+        [ -0.105656, -0.222316, -0.108070, -0.163439,    # 0, 1,2,3, 
+        -0.149938, 0.029457, 0.121139 ,0.135219, 0.118195, 0.185345 , 0.126904, 0.209404 ,       # 4, 5,6,7,8,9,10,11
+       0.250366, 0.191952, 0.145078, 0.086946 ]       # 12, 13,17,25,
+           ]) * 100   
+
+
+
+
+
+
+
+sdf3=np.transpose(sdf2)
+
+
+#pp=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 17, 25, 37]
+sdf.index=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 17, 25, 37]
+labels = ['Ridge Regression', 'Random Forest', 'SVM', 'Extra Trees']
+
+#[b,c,d,e] = plot(sdf3)
+#plt.legend([b,c,d,e], ["b","c","d","e"], loc=1)
+#plt.plot(sdf.index, sdf3, label=labels)
+#for sdf3_arr, label in zip(sdf3, labels):
+#    plt.plot(sdf.index, sdf3_arr, label=label)
+
+
+plt.plot(sdf.index, sdf2[0], 'b', label='Ridge Regression')
+plt.plot(sdf.index, sdf2[1], 'r', label='Random Forest')
+plt.plot(sdf.index, sdf2[2], 'g', label='SVM')
+plt.plot(sdf.index, sdf2[3], 'm', label='Extra Trees')
+
+
+plt.legend()
+#legend((line1, line2, line3), ('label1', 'label2', 'label3'))
+#ph = sdf.plot(x=range(1,16))
+plt.ylabel('Explained variance (R^2)')
+plt.xlabel('weeks')
